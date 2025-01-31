@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="th">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>fen.knsm</title>
+	<link rel="icon" type="image/x-icon" href="assets/logo1.jpg" />
+    
+    <style>
+        body {
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            padding-top: 60px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            color: #ff4d6d;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+
+        p {
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .button {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background-color: #ff1e40;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>รอหน่อยนะ</h1>
+
+    <div class="container">
+        <p id="demo"></p>
+    </div>
+
+    <br>
+
+    <!-- ปุ่มจะถูกซ่อนไว้จนกว่าจะหมดเวลา -->
+    <button id="goButton" class="button hidden" onclick="window.location.href='fen.html'">
+        กดเลย
+    </button>
+
+    <script>
+        var countDownDate = new Date("Feb 1, 2025 00:00:00 GMT+7").getTime();
+
+        var x = setInterval(function () {
+            var now = new Date().toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
+            now = new Date(now).getTime();
+
+            var distance = countDownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("demo").innerHTML =  hours + " : "
+                + minutes + " : " + seconds ;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "ถึงเวลาและ";
+                document.getElementById("goButton").classList.remove("hidden"); // แสดงปุ่ม
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
