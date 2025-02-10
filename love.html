@@ -57,17 +57,42 @@
         <div class="card-body">
             <p class="card-text">ขอบคุณในความบังเอิญที่ทำให้เราได้มาเจอกัน ตั้งแต่วันแรกจนถึงวันนี้พี่รู้สึกดีมาตลอด เราทำให้ทุกวันเป็นเหมือนวันพิเศษ แล้วพี่ก็หวังนะว่าเราจะรู้สึกเหมือนกันกับพี่ พี่เป็นคนพูดความในใจไม่เก่ง แต่ทุกครั้งที่พี่ได้คุยกับเราพี่มีความสุขมาก ตอนได้เจอกันครั้งแรก และครั้งที่ 2 ได้ไปเที่ยวกับเรามันเป็นความทรงจำที่ดีมาก ๆ เลยนะ ถ้าความฝันของพี่คือการเดินทางพี่ก็อยากให้มีเราอยู่ในทุก ๆ การเดินทางของพี่เหมือนกัน เราคุยกันมาเดือนกว่าแล้วมันมีอะไรหลาย ๆ อย่างที่ทำให้พี่มั่นใจว่ามันคือความรัก ตั้งแต่พี่คุยกับเรามาพี่ไม่เคยรู้สึกอยากจะอยู่คนเดียวเลย ทั้งที่พี่ไม่เคยเป็นแบบนี้มาก่อน ถ้าจะเปรียบก็คงเหมือนเพลงที่พบโดยบังเอิญ แต่พี่ก็ดันตกหลุมรักเพลงนั้น ฟังได้เรื่อย ๆ เป็นความประทับใจที่ไม่มีวันจบ และไม่มีวิธีไหนที่จะทำให้เลิกชอบได้ ถ้าย้อนกลับไปฟังก็คงชอบอยู่ตลอด พี่อยากจะบอกเราว่าหากวันไหนที่มีอะไรใจร้ายกับเรา พี่จะอยู่ข้างเราจะคอยกอดคอยปลอบในเวลาที่เราเหนื่อย จะดูแลเราจนกว่าเราจะรู้สึกดี จะอวยพรให้เราเจอแต่สิ่งที่ดีให้เราเติบโตอย่างมีความสุขนะ หากเราได้รักกันก็อยากจะให้รักครั้งนี้มันเป็นความสบายใจ ถ้าตลอดกาลมันไม่มีจริง งั้นก็ขอให้เราได้คบกันไปนาน ๆ เท่าที่จะนานได้เลยนะ    </p>
 			<h2>"เป็นแฟนกับพี่นะ"</h2>
+			
+            <div id="timerContainer" class="mt-3">
+                <h2>เราเป็นแฟนกันแล้ว ขอให้เวลาของเราเดินต่อไปเรื่อย ๆ เลยนะ</h2>
+                <p id="timer" class="fs-4"></p>
+<!--
             <button id="acceptButton" class="btn btn-danger mt-3">ตกลง</button>
             <div id="timerContainer" class="mt-3" style="display: none;">
                 <h2>เราเป็นแฟนกันแล้ว ขอให้เวลาของเราเดินต่อไปเรื่อย ๆ เลยนะ</h2>
                 <p id="timer" class="fs-4"></p>
+-->
                 <!--<button id="resetButton" class="btn btn-warning mt-3">รีเซ็ต ⏳</button>-->
             </div>
         </div>
     </div>
     
+<script>
+        let startTime = new Date('2025-02-01T00:00:00').getTime();
+        function startTimer() {
+            setInterval(updateTimer, 1000);
+        }
 
+        function updateTimer() {
+            let elapsedTime = Date.now() - startTime;
+            let totalSeconds = Math.floor(elapsedTime / 1000);
+            let days = Math.floor(totalSeconds / 86400);
+            let hours = Math.floor((totalSeconds % 86400) / 3600);
+            let minutes = Math.floor((totalSeconds % 3600) / 60);
+            let seconds = totalSeconds % 60;
+            
+            document.getElementById('timer').innerText = `${days} Day ${hours} : ${minutes} : ${seconds} :`;
+        }
 
+        startTimer();
+    </script>
+
+<!--
     <script>
         let startTime = localStorage.getItem("startTime");
         let timerInterval;
@@ -109,6 +134,7 @@
             document.getElementById('timer').innerText = `${hours}h ${minutes}m ${seconds}s`;
         }
     </script>
+-->
 	
 
 </body>
