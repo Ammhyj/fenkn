@@ -476,6 +476,7 @@ function playMusic() {
     let audio = document.getElementById("background-music");
     audio.play();
 }
+
 </script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -488,5 +489,13 @@ function playMusic() {
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script>
+            // ถ้าไม่มีค่า authenticated ใน sessionStorage ให้เด้งกลับไปหน้า login
+            if (sessionStorage.getItem("authenticated") !== "true") {
+                alert("คุณไม่มีสิทธิ์เข้าถึงหน้านี้ กรุณาเข้าสู่ระบบก่อน!");
+                window.location.href = "index.html"; // กลับไปหน้า Login
+            }
+        </script>
+        
     </body>
 </html>
